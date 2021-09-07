@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/bitCoinLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginTop="30dp"
+        android:contentDescription="@string/logo_of_bitcoin_for_visual_identification"
+        android:src="@drawable/bitcoin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/screenTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/allerta"
+        android:text="@string/screen_title"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/bitCoinLogo"
+        app:layout_constraintTop_toBottomOf="@id/bitCoinLogo" />
+
+    <TextView
+        android:id="@+id/screenInfoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/screen_info_text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/screenTitleTextView" />
+
+    <TextView
+        android:id="@+id/errorText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/error_msg_goes_here"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_error"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/screenInfoTextView"
+        app:layout_constraintStart_toStartOf="@id/screenInfoTextView"
+        app:layout_constraintTop_toBottomOf="@id/screenInfoTextView" />
+
+    <TextView
+        android:id="@+id/inputLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/enter_amount"
+        app:layout_constraintStart_toStartOf="@id/screenInfoTextView"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/errorText" />
+
+    <EditText
+        android:id="@+id/amountValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:autofillHints="Money Value"
+        android:hint="@string/amount_in_ngn"
+        android:inputType="number"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/convertBtn"
+        app:layout_constraintStart_toStartOf="@id/inputLabel"
+        app:layout_constraintTop_toBottomOf="@id/inputLabel" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/convertBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/convert"
+        app:layout_constraintBottom_toBottomOf="@id/amountValue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/amountValue" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switchCompat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="Round numbers to nearest whole number"
+        app:layout_constraintStart_toStartOf="@id/amountValue"
+        app:layout_constraintTop_toBottomOf="@id/amountValue"
+        app:showText="false" />
+
+
+    <TextView
+        android:id="@+id/convertedValueTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/allerta"
+        android:text="@string/bitCoinValueTxt"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/screenInfoTextView"
+        app:layout_constraintTop_toBottomOf="@+id/switchCompat" />
+
+    <TextView
+        android:id="@+id/converted_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_conversion_yet"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/screenInfoTextView"
+        app:layout_constraintTop_toBottomOf="@id/convertedValueTitleText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

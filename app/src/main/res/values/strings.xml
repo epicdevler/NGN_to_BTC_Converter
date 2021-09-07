@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BitCoin Converter</string>
+    <string name="screen_title">NGN TO BITCOIN CONVERTER</string>
+    <string name="screen_info_text">currency converter from NGN to XBT\nConvert your Naira to Bitcoin and see what it\'s worth in the online world</string>
+    <string name="amount_in_ngn">Amount in NGN</string>
+    <string name="no_conversion_yet">No Conversion yet!</string>
+    <string name="bitCoinValueTxt">Converted to</string>
+    <string name="convert">Convert</string>
+    <string name="enter_amount">Enter amount</string>
+    <string name="logo_of_bitcoin_for_visual_identification">Logo of Bitcoin for Visual identification</string>
+    <string name="error_msg_goes_here">Error Msg Goes here…</string>
+</resources>
