@@ -21,48 +21,27 @@ class MainActivity : AppCompatActivity() {
 
         binding.convertBtn.setOnClickListener {
 
-            val userAmountInput = binding.amountValue.text
+            val userAmountInput = binding.amountValue.text.toString().toDoubleOrNull()
 
-//            Check for invalid input states before making currency amount conversation
-            if (userAmountInput.toString().isEmpty() ||
-                userAmountInput.toString() == "0" ||
-                userAmountInput.toString() == "0.0"
-            ) {
-//                    error state
-                showErrorMsg("Invalid amount")
-            } else {
-                hideErrorMsg()
-
-                bitCoinConverter = Converter()
-
-                val bitCoinAmount = bitCoinConverter.convert(userAmountInput)
-
-                val currencyFormatter = NumberFormat.getCurrencyInstance()
-//                Replace dollar sign with bitcoin sign
-                val convertedCash = currencyFormatter.format(bitCoinAmount).replace("$", "₿ ")
-
-//                Validate the state of switch button when convert button is clicked
-                if (binding.switchCompat.isChecked) {
-                    binding.convertedValue.text = "₿ ${bitCoinAmount.toInt()}"
-
-                } else {
-                    binding.convertedValue.text = convertedCash
-                }
-
+            if (userAmountInput == null || userAmountInput == 0.00) {
+                displayConversion(0.00)
+                return@setOnClickListener
             }
+            var converter = Converter()
 
+//            MAKE CONVERSION
+            var convert = converter.convert(binding.amountValue.text)
+            if (binding.switchCompat.isChecked) {
+                convert = convert.let { kotlin.math.round(it) }
+            }
+            displayConversion(convert)
         }
 
     }
 
-    private fun showErrorMsg(msg: String) {
-        binding.errorText.visibility = VISIBLE
-        binding.errorText.text = msg
-    }
-
-    private fun hideErrorMsg() {
-        binding.errorText.visibility = GONE
-        binding.errorText.text = ""
+    private fun displayConversion(convert: Double) {
+        binding.convertedValue.text =
+            NumberFormat.getNumberInstance().format(convert)
     }
 
 }
